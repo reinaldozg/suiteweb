@@ -3,7 +3,7 @@
  Spring Mvc + Spring Security + Spring Data + Thymeleaf + Bootstrap 4
 
 Documentação swagger
-http://localhost:8080/seguranca-oauth2-jwt/swagger-ui.html (Não disponivel)
+http://localhost:8080/suiteweb/swagger-ui.html (Não disponivel)
 
 Pré-requisitos
 O Git e o JDK8 constroem .
