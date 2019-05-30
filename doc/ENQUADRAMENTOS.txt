@@ -1,0 +1,12 @@
+*************************   CONFIGURAÇÕES NO SISTEMA  *************************************
+
+								(ENQUADRAMENTOS)
+					
+- ALTERAR COR DE LAYOUT DO SISTEMA CLICANDO NA COR QUE SERÁ LISTADA NO FORMULARIO.
+
+	PARA APLICAR COR DE TEMAS NO SISTEMA DEVEMOS SEGUIR OS PASSOS ABAIXO:
+	* CRIAR ARQUIVO CSS NO TEMA QUE DESEJAR, E COLOCAR CARGA NA TABELA 'tbl_custom'
+
+	EXEMPLO: 
+		INSERT INTO tbl_custom(id, tema, paleta_hexa, ativa) 
+		VALUES (0, 'green', '#8bc43f', true);

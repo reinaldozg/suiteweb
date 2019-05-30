@@ -1,0 +1,89 @@
+<meta charset="UTF-8"/>
+
+<nav 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	th:fragment="menu"
+	class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+		<a class="navbar-brand" href="index.html" th:text="#{sistema.titulo}">NOME SISTEMA</a>
+	   	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	    	<span class="navbar-toggler-icon"></span>
+	    </button>
+	    	
+	    <div id="navbarResponsive" class="collapse navbar-collapse">  
+	    
+	    	<ul class="navbar-nav navbar-sidenav" id="menu-app">  
+		  		<li class="nav-item" data-toggle="tooltip" data-placement="right" th:title="#{menu.estrutura}" sec:authorize="hasAnyRole('ROLE_USUARIO')">
+		        	<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSuporte" data-parent="#menu-app">
+		            	<i class="fa fa-fw fa-wrench"></i>
+		            	<span class="nav-link-text" th:text="#{menu.estrutura}">ESTRUTURA</span>
+		          	</a>
+		          	<ul class="sidenav-second-level collapse" id="collapseSuporte">
+			            <li sec:authorize="hasAnyRole('ROLE_SUPORTE')">
+			            	<a th:href="@{/suporte/buscar}">
+	 							<i class="fa fa-fw fa-wrench"></i>
+			            		<span class="nav-link-text" th:text="#{menu.estrutura.empresa}">EMPRESA</span>
+			            	</a>
+			            </li>
+			            <li sec:authorize="hasAnyRole('ROLE_SUPORTE')">
+			              	<a th:href="@{/suporte/buscar}">
+	 							<i class="fa fa-fw fa-wrench"></i>
+			            		<span class="nav-link-text" th:text="#{menu.estrutura.regiao}">REGIÃO</span>
+			            	</a>
+			            </li>
+			            <li sec:authorize="hasAnyRole('ROLE_USUARIO')">
+			              	<a th:href="@{/suporte/buscar}">
+	 							<i class="fa fa-fw fa-wrench"></i>
+			            		<span class="nav-link-text" th:text="#{menu.estrutura.unidade}">UNIDADE</span>
+			            	</a>
+			            </li>
+		         	</ul>
+		       	</li>	             
+		       	
+		       	<li class="nav-item" data-toggle="tooltip" data-placement="right" th:title="#{menu.acesso}" sec:authorize="hasAnyRole('ROLE_USUARIO')">
+		        	<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAcesso" data-parent="#menu-app">
+		            	<i class="fa fa-fw fa-wrench"></i>
+		            	<span class="nav-link-text" th:text="#{menu.acesso}">ACESSO</span>
+		          	</a>
+		          	<ul class="sidenav-second-level collapse" id="collapseAcesso">
+			            <li sec:authorize="hasAnyRole('ROLE_USUARIO')">
+			            	<a th:href="@{/suporte/buscar}">
+	 							<i class="fa fa-fw fa-wrench"></i>
+			            		<span class="nav-link-text"  th:text="#{menu.acesso.usuario}">USUÁRIO</span>
+			            	</a>
+			            </li>
+		         	</ul>
+		       	</li>	        
+		       	
+		       	<li class="nav-item" data-toggle="tooltip" data-placement="right" th:title="#{menu.dispositivo}" sec:authorize="hasAnyRole('ROLE_USUARIO')">
+		        	<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseDispositivo" data-parent="#menu-app">
+		            	<i class="fa fa-fw fa-wrench"></i>
+		            	<span class="nav-link-text" th:text="#{menu.dispositivo}">DISPOSITIVO</span>
+		          	</a>
+		          	<ul class="sidenav-second-level collapse" id="collapseDispositivo">
+			            <li sec:authorize="hasAnyRole('ROLE_USUARIO')">
+			            	<a th:href="@{/suporte/buscar}">
+	 							<i class="fa fa-fw fa-wrench"></i>
+			            		<span class="nav-link-text" th:text="#{menu.dispositivo.totem}">TOTEM</span>
+			            	</a>
+			            </li>
+			            <li sec:authorize="hasAnyRole('ROLE_USUARIO')">
+			            	<a th:href="@{/suporte/buscar}">
+	 							<i class="fa fa-fw fa-wrench"></i>
+			            		<span class="nav-link-text" th:text="#{menu.dispositivo.painel}">PAINEL</span>
+			            	</a>
+			            </li>
+			             <li sec:authorize="hasAnyRole('ROLE_USUARIO')">
+			            	<a th:href="@{/suporte/buscar}">
+	 							<i class="fa fa-fw fa-wrench"></i>
+			            		<span class="nav-link-text" th:text="#{menu.dispositivo.pesquisa}">PESQUISA</span>
+			            	</a>
+			            </li>
+		         	</ul>
+		       </li>	       	       	
+		 </ul>      
+	      
+	</div>
+</nav>   	
+   	
+

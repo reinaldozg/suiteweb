@@ -1,0 +1,75 @@
+<div 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	th:fragment="menu">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+		<a class="navbar-brand" href="index.html">Nome Sistema</a>
+	    	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	      		<span class="navbar-toggler-icon"></span>
+	    	</button>
+	    	
+	    	<div id="navbarResponsive" class="collapse navbar-collapse">       
+	         
+		  	<ul class="navbar-nav navbar-sidenav" id="menu-app">    
+		         
+		    	<li th:each="m : ${menu}" th:title="${m.descricao}" class="nav-item" data-toggle="tooltip" data-placement="right"
+		    	  th:if="${#authorization.expression('hasAnyRole('+m.hasRole+')')}">
+		    	  	    	  	          	
+		          	<a th:href="'#collapse-' + ${m.id}" class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-parent="#menu-app">
+		            	<i th:classappend="${m.icone}"></i>
+		           	 	<span th:text="${m.descricao}" class="nav-link-text">Menu 01</span>
+		          	</a>
+		          	
+		         	<ul th:id="'collapse-' + ${m.id}" class="sidenav-second-level collapse">
+			        	<li  th:each="i : ${m.itens}" th:if="${#authorization.expression('hasAnyRole('+i.hasRole+')')}">
+			            	<a th:href="@{${i.acao}}" class="nav-link" >
+		            			<i th:classappend="${i.icone}"></i>
+		            			<span th:text="${i.descricao}" class="nav-link-text">Item</span>            			
+		           			</a>
+			            </li>	            
+		          	</ul>
+		          	
+		        </li>    	                     
+		  	</ul>           
+	      
+		      <ul class="navbar-nav sidenav-toggler">
+		        <li class="nav-item">
+		          <a class="nav-link text-center" id="sidenavToggler">
+		            <i class="fa fa-fw fa-angle-left"></i>
+		          </a>
+		        </li>
+		      </ul>
+		           
+		      <ul class="navbar-nav ml-auto">
+	
+		        <li class="nav-item">
+		          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+		            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+		        </li>
+		      </ul>
+	    
+	    </div>
+	         	
+	   	</nav>
+   	
+   		<!-- Logout Modal-->
+	  	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	      <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	          <div class="modal-header">
+	            <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
+	            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+	              <span aria-hidden="true">×</span>
+	            </button>
+	          </div>
+	          <div class="modal-body">Selecione "Logout" abaixo se você estiver pronto para terminar sua sessão atual.</div>
+	          <div class="modal-footer">
+	          	<form method="post" th:action="@{/logout}">
+		            <input class="btn btn-secondary" type="button" data-dismiss="modal" value="Cancelar"/>
+		            <input class="btn btn-primary" type="submit" value="Logout"/>
+	       		</form>
+	          </div>
+	        </div>
+	      </div>
+	  	</div>
+	</div>

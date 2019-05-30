@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="fragmentos/layouts/menu-app"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<div layout:fragment="content">
+		<main>
+        	<div class="painel" data-exclude="xs" id="empresa-lista">
+       			<div class="painel-header bordered">
+                	<h3 class="title">
+                    	<i class="fa fa-home fa-lg"></i> Empresa</h3>
+               	</div>
+              	<div class="painel-body">
+                	<div class="table-responsive">
+                		<div class="table-header">  
+                			<form method="GET" th:action="@{/empresa}">                		                   		
+								<div class="limit">
+									<div class="dropdown" data-toggle="dropdown">
+										<input id="porPagina" name="porPagina" type="text" class="form-control" th:value="${porPagina}" readonly="readonly" autocomplete="off" />
+										<a href="#" class="bt dropdown-toggle"></a>
+									</div>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" th:classappend="${porPagina == 5}? 'active'" th:href="${'?porPagina=5'}">5</a>
+										<a class="dropdown-item" th:classappend="${porPagina == 10}? 'active'" th:href="${'?porPagina=10'}">10</a>
+										<a class="dropdown-item" th:classappend="${porPagina == 20}? 'active'" th:href="${'?porPagina=20'}">20</a>
+										<a class="dropdown-item" th:classappend="${porPagina == 30}? 'active'" th:href="${'?porPagina=30'}">30</a>
+										<a class="dropdown-item" th:classappend="${porPagina == 40}? 'active'" th:href="${'?porPagina=40'}">40</a>
+										<a class="dropdown-item" th:classappend="${porPagina == 50}? 'active'" th:href="${'?porPagina=50'}">50</a>
+										<a class="dropdown-item" th:classappend="${porPagina == 100}? 'active'" th:href="${'?porPagina=100'}">100</a>																															
+									</div>							     					
+								</div>				
+		                        <div class="search">
+		                        	<input type="text" class="form-control underlined" name="search" id="search" th:value="${search}" placeholder="Digite sua pesquisar" autocomplete="off"/>
+		                           
+		                            <button class="bt" type="submit">
+	                               		<i class="fa fa-search"></i>	                               		
+	                               	</button>
+<!-- 		                            <a class="bt" href=""><i class="fa fa-search"></i></a> -->
+		                       	</div>
+	                    	</form>                    
+	                    </div>                      	
+	                    <table class="dataTable collapsed dtr-inline table-bordered nowrap dt-responsive no-footer">
+	                    	<thead>
+	                        	<tr>                            
+									<th>Razão Social</th>
+									<th>Cnpj</th>	
+									<th>Atualização</th>	     
+									<th>
+										<a class="bt-table-new"><i class="fa fa-newspaper-o"></i></a>
+						           	</th>
+								</tr>
+	                      	</thead>
+	                        <tbody>
+	                        	<tr role="row" th:each='empresa : ${empresas}'>	                            			                            	
+	                            	<td th:text="${empresa.razaoSocial}">RAZÃO SOCIAL</td>		
+									<td th:text="${empresa.cnpjCpf}">336.987.890-51</td>
+									<td th:text="${{empresa.dtAtualizacao}}">28/05/2018</td>	  
+									<td>
+										<a id="drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default">
+	                                    	<i class="fa fa-ellipsis-v"></i></a>
+	                                 	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+	                                    	<a class="dropdown-item" href="#">
+	                                        	<i class="fa fa-pencil-square-o"></i></a>
+	                                   		<div class="dropdown-divider"></div>
+	                                    	<a class="dropdown-item" href="#">
+	                                        	<i class="fa fa-times"></i></a>
+	                                  	</div>
+									</td>
+	                           	</tr>
+	                            <tr role="row" th:if="${#lists.isEmpty(empresas)}">   	
+									<td class="no-values" colspan='4'>Nenhuma empresa foi encontrada</td>													
+								</tr>				
+	                       	</tbody>
+	                    </table>
+                       	<div class="table-footer">
+                            <div class="information">
+                                <span th:text="#{tabela.mensagem.itens.mostrando} +' '+ 
+                                			   ${msgResultInicio} +' '+  
+                                			   #{tabela.mensagem.itens.a} +' '+ 
+                                			   ${msgResultFim} +' '+  
+                                			   #{tabela.mensagem.itens.de} +' '+  
+                                			   ${msgResultTotal} +' '+ 
+                                			   #{tabela.mensagem.itens.itens} "> MOSTRANDO DE 1 A 10 DE 57 ITENS </span>
+                            </div>
+                            <div class="pagination" th:if="${!#lists.isEmpty(empresas)}">
+                                <ul>
+                                	<li>
+                                        <a href="#">Ante</a>
+                                    </li>
+                                    <li th:each="pagina : ${#numbers.sequence( __${primeiraPagina}__, __${ultimaPagina}__)}"
+                                    	th:classappend="${pagina == (atualPagina)}? 'active'">
+                                        <a th:href="${#strings.concat('?pagina=','__(${pagina} -1)__','&amp;porPagina=','__${porPagina}__')}" th:text="${pagina}"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Prox</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                 	</div>
+         		</div>
+          	</div>
+        </main>
+	</div>
+</html>

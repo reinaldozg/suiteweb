@@ -1,0 +1,3 @@
+suite-utils/target/classes/META-INF/maven/suite-utils/suite-utils/pom.properties
+gerador-api/target/classes/META-INF/maven/gerador-api/gerador-api/pom.properties
+suite-entidades/target/classes/META-INF/maven/suite-entidades/suite-entidades/pom.properties

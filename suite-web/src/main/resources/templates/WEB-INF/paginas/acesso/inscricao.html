@@ -1,0 +1,97 @@
+<!doctype html>
+<html class="no-js"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+    <head>
+    	<meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+        <title th:text="#{sistema.nome}">TITULO</title>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="author" content="reinaldo.developer@outlook.com" />  
+		
+        <th:block th:replace="fragmentos/imports/default-style"></th:block>
+      	
+    </head>
+    <body>
+      	<div class="auth">
+        	<div class="auth-intro">
+            	<div class="logo">
+                    <span th:text="#{sistema.letra.inicial}">INICIAL</span>
+                </div>
+                <div class="intro-title" th:text="#{inscricao.introcao.titulo}">INTRO TITULO</div>
+                <div class="intro-descricao" th:text="#{inscricao.introcao.descricao}">INTRO DESCRICAO</div>
+            </div>
+            <div class="auth-container">
+                <header class="auth-header">
+                    <div class="auth-title">
+                        <div class="logo">
+                            <span th:text="#{sistema.letra.inicial}">Z</span>
+                        </div> 
+                    	<div style="display: initial;" th:text="#{sistema.nome}">NOME SISTEMA</div>
+                    </div>
+                </header>
+                    <div class="auth-content">
+                    	<p class="text-center" th:text="#{inscricao.titulo}">INSCRIÇÃO PARA OBTER ACESSO</p>
+                        <form id="inscricao-form" th:action="@{/acesso/inscricao}" method="POST">
+                            <div class="form-group">
+                                <label for="firstname">Name</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control underlined" name="nome" id="nome" placeholder="Entre com nome"/> 
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control underlined" name="sobreNome" id="sobreNome" placeholder="Entre com sobre nome"/> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            	<label for="email" th:text="#{inscricao.form.email}">EMAIL</label>
+                                <input type="email" class="form-control underlined" name="email" id="email" placeholder="Entre com o endereço de email"/> 
+                            </div>
+                            <div class="form-group">
+                                <label for="senha" th:text="#{inscricao.form.senha}">SENHA</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control underlined" name="senha" id="password" placeholder="Enter password"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control underlined" name="retype_password" id="retype_password" placeholder="Re-type password"/> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="agree">
+                                    <input class="checkbox" name="agree" id="agree" type="checkbox" />
+                                    <span>Agree the terms and
+                                        <a href="#">policy</a>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
+                            </div>
+                            <div class="form-group">
+                                <p class="text-muted text-center">Already have an account?
+                                    <a href="login.html">Login!</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="text-center">
+                    	<a href="index.html" class="btn btn-secondary btn-sm">
+                        	<i class="fa fa-arrow-left"></i> Back to dashboard </a>
+                	</div>
+                </div>                
+            </div>
+        <!-- Reference block for JS -->
+        <div class="ref" id="ref">
+            <div class="color-primary"></div>
+            <div class="chart">
+                <div class="color-primary"></div>
+                <div class="color-secondary"></div>
+            </div>
+        </div>
+		<th:block th:replace="fragmentos/imports/default-script"></th:block>
+    </body>
+</html>

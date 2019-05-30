@@ -1,0 +1,64 @@
+<!doctype html>
+<html class="no-js"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+    <head>
+    	<th:block th:replace="fragmentos/imports/default-meta"></th:block>
+        <th:block th:replace="fragmentos/imports/default-style"></th:block>
+      	<title th:text="#{sistema.nome}">TITULO</title>
+    </head>
+    <body>
+        <div class="auth">
+            <div class="auth-intro">
+                <div class="logo">
+                    <span th:text="#{sistema.letra.inicial}">INICIAL</span>
+                </div>
+                <div class="intro-title" th:text="#{login.introcao.titulo}">INTRO TITULO</div>
+                <div class="intro-descricao" th:text="#{login.introcao.descricao}">INTRO DESCRICAO</div>
+            </div>
+            <div class="auth-container ps-scrollview-auto">
+                <header class="auth-header">
+                    <div class="auth-title">
+                        <div class="logo">
+                            <span th:text="#{sistema.letra.inicial}">Z</span>
+                        </div> 
+                    	<div style="display: initial;" th:text="#{sistema.nome}">NOME SISTEMA</div>
+                    </div>
+                </header>
+                <div class="auth-content">
+                	<p th:if="${param.error}" class="text-center error" th:text="#{login.form.validacao}">LOGIN OU SENHA INVALIDA</p>
+                    <p class="text-center" th:text="#{login.titulo}">TITULO LOGIN</p>
+                    <form id="login-form" method="POST" th:action="@{/login}">                    	
+                        <div class="form-group">
+                            <label for="username" th:text="#{login.form.email}">EMAIL</label>
+                            <input type="text" class="form-control underlined" name="username" id="username" placeholder="Digite seu login de acesso" /> 
+                        </div>
+                        <div class="form-group">
+                            <label for="password" th:text="#{login.form.senha}">SENHA</label>
+                            <input type="password" class="form-control underlined" name="password" id="password" placeholder="Digite sua senha" />
+                        </div>
+                        <div class="form-group">
+                            <label for="remember-me">
+                                <input class="checkbox" id="remember-me" name="remember-me" type="checkbox"/>
+                                <span th:text="#{login.form.lembrarme}">LEMBRAR-ME</span>
+                            </label>
+                        </div>                       
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-primary" th:text="#{login.form.entrar}">BOTAO ENTRAR</button>
+                        </div>
+                         <input type="hidden" id="themeName" name="themeName" th:value="${themeName}?${themeName}:'default'"/> 
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Reference block for JS -->
+        <div class="ref" id="ref">
+            <div class="color-primary"></div>
+            <div class="chart">
+                <div class="color-primary"></div>
+                <div class="color-secondary"></div>
+            </div>
+        </div>
+         <th:block th:replace="fragmentos/imports/default-script"></th:block>	
+    </body>
+</html>

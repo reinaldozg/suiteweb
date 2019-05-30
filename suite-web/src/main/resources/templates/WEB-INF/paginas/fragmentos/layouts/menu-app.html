@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html class="no-js"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+        <title th:text="#{sistema.nome}">TITULO</title>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="author" content="reinaldo.developer@outlook.com" />             
+        <th:block th:replace="fragmentos/imports/default-style"></th:block>       
+    </head>
+     <body>
+	     <div class="app" id="app">
+         	<header class="header">
+            	<div class="header-block header-block-collapse d-lg-none d-xl-none">
+                	<button class="collapse-btn" id="sidebar-collapse-btn">
+                    	<i class="fa fa-bars"></i>
+                   	</button>
+               	</div>
+               	<div class="separator-header"></div>
+                <div class="header-block header-block-nav">
+                	<ul class="nav-profile">
+                        <li class="profile dropdown">
+                        	<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            	<div class="img rounded-circle" style="background-image: url('static/static/assets/faces/profile.jpg')"> </div>
+                                <span class="name" sec:authentication="principal.username"> NOME DO USUARIO </span>
+                           	</a>
+                            <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
+                            	<a class="dropdown-item" href="#">
+                                	<i class="fa fa-user icon"></i> Profile </a>
+                              	<a class="dropdown-item" href="#">
+                                	<i class="fa fa-bell icon"></i> Notifications </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fa fa-gear icon"></i> Settings </a>
+                                <div class="dropdown-divider"></div>
+                                <form method="POST" th:action="@{/logout}">
+	                                <button class="dropdown-item" type="submit">
+	                               		<i class="fa fa-power-off icon"></i>
+	                               		<span th:text="#{menu.sair}">SAIR</span>
+	                               	</button>
+                                </form>
+                           	</div>
+                      	</li>
+                 	</ul>
+               	</div>            	
+               <div id="collapse-chat-btn-msep">
+                    <div class="separator-header"></div>
+                    <div class="header-block header-block-collapse-group">
+                        <button class="collapse-group-btn" id="collapse-chat-btn">
+                            <i class="fa fa-comments"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="separator-header"></div>
+                <div class="header-block header-block-collapse-group">
+                    <button class="collapse-group-btn" id="quick-panel-btn">
+                        <i class="fa fa-list-ul"></i>
+                    </button>
+                </div>
+          	</header>
+           	<aside class="sidebar">
+            	<div class="sidebar-container ps-scrollview-auto">
+                	<div class="sidebar-header">
+                    	<div class="brand">
+                        	<div class="logo">
+                            	<span>Z</span>
+                           	</div>
+                            <div class="nome-sistema">suite Web </div>
+                       	</div>
+                  	</div>
+                    <nav class="menu">
+                    	<ul class="sidebar-menu metismenu" id="sidebar-menu">
+<!--                         	<li> -->
+<!--                             	<a th:href="@{/empresa}"> -->
+<!--                                 	<i class="fa fa-file-text-o"></i> EMPRESA                                         -->
+<!--                                	</a>                                    -->
+<!--                           	</li> -->
+                            <li>
+                            	<a href="">
+                                	<i class="fa fa-file-text-o"></i> Autenticação
+                                    <i class="fa arrow"></i>
+                               	</a>
+                                <ul class="sidebar-nav">
+                                	<li>
+                                    	<a href="login.html"> Login </a>
+                                   	</li>
+                                    <li>
+                                    	<a th:href="@{/acesso/inscricao}"> Inscrição </a>
+                                  	</li>
+                                    <li>                                        
+                                    	<a th:href="@{/acesso/recuperar/senha}"> Recuperar senha </a>
+                                   	</li>
+                              	</ul>
+                          	</li>
+                            <li>
+                            	<a href="">
+                                	<i class="fa fa-file-text-o"></i> Erros
+                                  	<i class="fa arrow"></i>
+                              	</a>
+                                <ul class="sidebar-nav">
+                                	<li>
+                                    	<a href="error-404.html"> Error 404 App </a>
+                                   	</li>
+                                    <li>
+                                    	<a href="error-500.html"> Error 500 App </a>
+                                   	</li>
+                              	</ul>
+                           	</li>
+                            <li>
+                            	<a href="">
+                                	<i class="fa fa-file-text-o"></i> Paginas
+                                    <i class="fa arrow"></i>
+                               	</a>
+                                <ul class="sidebar-nav">
+                                	<li>
+                                    	<a th:href="@{/empresa}"> Lista </a>
+                                   	</li>
+                                    <li>
+                                    	<a href="#"> Visualizar </a>
+                                   	</li>
+                                    <li>
+                                    	<a href="#"> Editar </a>
+                                   	</li>
+                              	</ul>
+                          	</li>
+                       	</ul>
+                   	</nav>
+              	</div>
+             
+          	</aside>
+            <div class="sidebar-overlay" id="sidebar-overlay"></div>
+            <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
+            <div class="mobile-menu-handle"></div>
+            <aside class="sidebar-quick-panel">
+                <div class="quick-panel-list">                    
+                     <nav class="menu">
+                        <ul class="sidebar-menu metismenu" id="sidebar-quick-panel">
+                            <li>
+                                <a></a>
+                                <ul class="sidebar-nav collapse"> </ul>
+                            </li>
+                            <div class="quick-panel-separator"></div>
+                        </ul>
+                    </nav>                   
+                </div>
+            </aside>
+            <div class="sidebar-quick-panel-overlay" id="sidebar-quick-panel-overlay"></div>
+            <aside class="sidebar-chat">
+                <div class="chat-header">
+                    <div class="header-btn left">
+                        <i id="chat-header-open-btn" class="fa fa-comments fa-2x"></i>
+                    </div>
+                    <div class="header-btn right">
+                        <i id="chat-header-close-btn" class="fa fa-times fa-1x"></i>
+                    </div>
+                </div>
+                <div class="chat-body">
+                    <div class="chat-contact-list ps-scrollview-auto">
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/3.jpg" alt="Smiley face" />
+                            <sup class="status-icon online"></sup>
+                        </div>
+                        <div class="chat-contact-item active">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/4.jpg" alt="Smiley face" />
+                            <sup class="status-icon offline"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/5.jpg" alt="Smiley face" />
+                            <sup class="status-icon ausente"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/7.jpg" alt="Smiley face" />
+                            <sup class="status-icon nao-perturbe"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/8.jpg" alt="Smiley face" />
+                            <sup class="status-icon nao-perturbe"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Arnold.jpg" alt="Smiley face" />
+                            <sup class="status-icon offline"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Barrera.jpg" alt="Smiley face" />
+                            <sup class="status-icon online"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Blair.jpg" alt="Smiley face" />
+                            <sup class="status-icon offline"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Boyle.jpg" alt="Smiley face" />
+                            <sup class="status-icon online"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Christy.jpg" alt="Smiley face" />
+                            <sup class="status-icon ausente"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Copeland.jpg" alt="Smiley face" />
+                            <sup class="status-icon online"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Estes.jpg" alt="Smiley face" />
+                            <sup class="status-icon online"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Harper.jpg" alt="Smiley face" />
+                            <sup class="status-icon ausente"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Helen.jpg" alt="Smiley face" />
+                            <sup class="status-icon online"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Henderson.jpg" alt="Smiley face" />
+                            <sup class="status-icon ausente"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Josefina.jpg" alt="Smiley face" />
+                            <sup class="status-icon online"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/Katina.jpg" alt="Smiley face" />
+                            <sup class="status-icon ausente"></sup>
+                        </div>
+                        <div class="chat-contact-item">
+                            <sup class="unread-count ng-star-inserted">8</sup>
+                            <img class="rounded-circle avatar" src="static/assets/faces/profile.jpg" alt="Smiley face" />
+                            <sup class="status-icon ausente"></sup>
+                        </div>
+                    </div>
+                    <div class="chat-content">
+                        <div class="chat-message-body ps-scrollview-auto">
+                            <div class="chat-message-text his">
+                                <p class="message">Angular reactive forms. </p>
+                                <div class="status">
+                                    <span class="sent">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="hora">15:46</span>
+                                </div>
+                            </div>
+                            <div class="chat-message-text his">
+                                <p class="message">Angular reactive forms facilitate.</p>
+                                <div class="status">
+                                    <span class="sent">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="hora">15:46</span>
+                                </div>
+                            </div>
+                            <div class="chat-message-text his">
+                                <p class="message">Angular reactive forms facilitate.</p>
+                                <div class="status">
+                                    <span class="sent">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="hora">15:46</span>
+                                </div>
+                            </div>
+                            <div class="chat-message-text his">
+                                <p class="message">Angular reactive. </p>
+                                <div class="status">
+                                    <span class="sent">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="hora">15:46</span>
+                                </div>
+                            </div>
+                            <div class="chat-message-text me">
+                                <p class="message">Angular reactive forms facilitate a reactive style. </p>
+                                <div class="status">
+                                    <span class="sent">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="hora">15:46</span>
+                                </div>
+                            </div>
+                            <div class="chat-message-text me">
+                                <p class="message">Angular reactive forms facilitate a reactive style of programming.</p>
+                                <div class="status">
+                                    <span class="sent">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="hora">15:46</span>
+                                </div>
+                            </div>
+                            <div class="chat-message-text his">
+                                <p class="message">Angular reactive. </p>
+                                <div class="status">
+                                    <span class="sent">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="hora">15:46</span>
+                                </div>
+                            </div>
+                            <div class="chat-message-text his">
+                                <p class="message">Angular reactive. </p>
+                                <div class="status">
+                                    <span class="sent">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="hora">15:46</span>
+                                </div>
+                            </div>
+                            <div class="chat-message-text me">
+                                <p class="message">Angular reactive forms facilitate a reactive style. </p>
+                                <div class="status">
+                                    <span class="sent">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="hora">15:46</span>
+                                </div>
+                            </div>
+                            <div class="chat-message-text me">
+                                <p class="message">Angular reactive forms facilitate a reactive style of programming.</p>
+                                <div class="status">
+                                    <span class="sent">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="hora">15:46</span>
+                                </div>
+                            </div>
+                            <div class="chat-message-text his">
+                                <p class="message">Angular reactive. </p>
+                                <div class="status">
+                                    <span class="sent">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="hora">15:46</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-message-footer">
+                            <div class="chat-message-edit">
+                                <textarea class="chat-text-edit ps-scrollview-auto"></textarea>
+                                <button id="chat-envio-btn" class="chat-envio">
+                                    <i class="fa fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+			<main class="content ps-scrollview-auto" layout:fragment="content"></main>	
+				
+			<div class="modal fade" id="modal-media">
+            	<div class="modal-dialog modal-lg">
+                	<div class="modal-content">
+                    	<div class="modal-header">
+                        	<h4 class="modal-title">Media Library</h4>
+                          	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            	<span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                           	</button>
+                       	</div>
+                        <div class="modal-body modal-tab-container">
+                        	<ul class="nav nav-tabs modal-tabs" role="tablist">
+                            	<li class="nav-item">
+                                	<a class="nav-link" href="#gallery" data-toggle="tab" role="tab">Gallery</a>
+                               	</li>
+                                <li class="nav-item">
+                                	<a class="nav-link active" href="#upload" data-toggle="tab" role="tab">Upload</a>
+                               	</li>
+                          	</ul>
+                            <div class="tab-content modal-tab-content">
+                            	<div class="tab-pane fade" id="gallery" role="tabpanel">
+                                	<div class="images-container">
+                                    	<div class="row"> </div>
+                                   	</div>
+                               	</div>
+                                <div class="tab-pane fade active in" id="upload" role="tabpanel">
+                                	<div class="upload-container">
+                                    	<div id="dropzone">
+                                        	<form action="/" method="POST" enctype="multipart/form-data" class="dropzone needsclick dz-clickable" id="demo-upload">
+                                            	<div class="dz-message-block">
+                                                	<div class="dz-message needsclick"> Drop files here or click to upload. </div>
+                                               	</div>
+                                          	</form>
+                                       	</div>
+                                   	</div>
+                               	</div>
+                           	</div>
+                       	</div>
+                        <div class="modal-footer">
+                        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Insert Selected</button>
+                       	</div>
+                   	</div>
+                    <!-- /.modal-content -->
+              	</div>
+                <!-- /.modal-dialog -->
+          	</div>
+           	<!-- /.modal -->
+            <div class="modal fade" id="confirm-modal">
+            	<div class="modal-dialog" role="document">
+                	<div class="modal-content">
+                    	<div class="modal-header">
+                        	<h4 class="modal-title">
+                            	<i class="fa fa-warning"></i> Alert</h4>
+                           	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            	<span aria-hidden="true">&times;</span>
+                           	</button>
+                       	</div>
+                        <div class="modal-body">
+                        	<p>Are you sure want to do this?</p>
+                       	</div>
+                   		<div class="modal-footer">
+                        	<button type="button" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                       	</div>
+                  	</div>
+                    <!-- /.modal-content -->
+              	</div>
+                <!-- /.modal-dialog -->
+           	</div>
+            <!-- /.modal -->
+       	</div>        
+        <!-- Reference block for JS -->
+        <div class="ref" id="ref">
+            <div class="color-primary"></div>
+            <div class="chart">
+                <div class="color-primary"></div>
+                <div class="color-secondary"></div>
+            </div>
+        </div>
+		<th:block th:replace="fragmentos/imports/default-script"></th:block>
+    </body>
+</html>
+		
+	
+	

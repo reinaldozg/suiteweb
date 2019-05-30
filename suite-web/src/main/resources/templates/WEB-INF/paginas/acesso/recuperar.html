@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+    <head>
+    	<meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+        <title th:text="#{sistema.nome}">TITULO</title>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="author" content="reinaldo.developer@outlook.com" />   
+		
+        <th:block th:replace="fragmentos/imports/default-style"></th:block>
+      	
+    </head>
+    <body>
+    	<div class="auth">
+        	<div class="auth-intro">
+            	<div class="logo">
+                    <span th:text="#{sistema.letra.inicial}">INICIAL</span>
+                </div>
+                <div class="intro-title" th:text="#{reset.introcao.titulo}">INTRO TITULO</div>
+                <div class="intro-descricao" th:text="#{reset.introcao.descricao}">INTRO DESCRICAO</div>
+            </div>
+            <div class="auth-container">
+                <header class="auth-header">
+                    <div class="auth-title">
+                        <div class="logo">
+                            <span th:text="#{sistema.letra.inicial}">Z</span>
+                        </div> 
+                    	<div style="display: initial;" th:text="#{sistema.nome}">NOME SISTEMA</div>
+                    </div>
+                </header>
+                <div class="auth-content">
+                	<p class="text-center" th:text="#{reset.titulo}">RECUPERAR SENHA</p>
+                    <p class="text-muted text-center">
+                    	<small th:text="#{reset.subtitulo}">ENTRE COM SEU EMAIL PARA RECUPERAR SUA SENHA</small>
+                    </p>
+                   	<form id="reset-form" method="POST" th:action="@{/acesso/recuperar/senha}">
+                    	<div class="form-group">
+                        	<label for="email" th:text="#{reset.form.email}">EMAIL</label>
+                            <input type="email" class="form-control underlined" name="email" id="email" placeholder="Digite seu email" /> 
+                        </div>
+                       	<div class="form-group">
+                       		<button type="submit" class="btn btn-block btn-primary" th:text="#{reset.form.recuperar}">RECUPERAR</button>
+                        </div>
+                        <div class="form-group clearfix">
+                        	<a class="pull-left" th:href="@{/login}" th:text="#{reset.form.retornarlogin}">RETORNAR AO LOGIN</a>
+                            <a class="pull-right" th:href="@{/acesso/inscricao}" th:text="#{reset.form.inscreverse}">INSCREVER-SE!</a>
+                        </div>
+                  	</form>
+             	</div>
+             	<div class="text-center">
+            		<a href="index.html" class="btn btn-secondary btn-sm">
+                		<i class="fa fa-arrow-left"></i> Back to dashboard </a>
+           		</div>
+         	</div>           
+       	</div>
+   
+        <!-- Reference block for JS -->
+        <div class="ref" id="ref">
+            <div class="color-primary"></div>
+            <div class="chart">
+                <div class="color-primary"></div>
+                <div class="color-secondary"></div>
+            </div>
+        </div>
+ 		<th:block th:replace="fragmentos/imports/default-script"></th:block>	
+    </body>
+</html>

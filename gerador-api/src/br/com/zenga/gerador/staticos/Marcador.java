@@ -1,0 +1,21 @@
+package br.com.suite.gerador.staticos;
+
+public class Marcador {
+
+	public final static String NOME_PACKAGE_DE_ENTIDADE = "@NOME_PACKAGE_DE_ENTIDADE";
+	public final static String NOME_PACKAGE_DE_CONTROLADOR = "@NOME_PACKAGE_DE_CONTROLADOR";
+	public final static String NOME_PACKAGE_DE_REPOSITORIO = "@NOME_PACKAGE_DE_REPOSITORIO";
+	
+	public final static String NOME_DA_CLASSE_PRIMEIRA_MAIUSCULA = "@NOME_DA_CLASSE_PRIMEIRA_MAIUSCULA";	
+	public final static String NOME_DA_CLASSE_PRIMEIRA_MINUSCULA = "@NOME_DA_CLASSE_PRIMEIRA_MINUSCULA";	
+	public final static String NOME_DA_CLASSE_TUDO_MINUSCULA = "@NOME_DA_CLASSE_TUDO_MINUSCULA";		
+	public final static String NOME_DA_CLASSE_TUDO_MINUSCULA_NO_PLURAL = "@NOME_DA_CLASSE_TUDO_MINUSCULA_NO_PLURAL";	
+	
+	public final static String INICIO_DA_IMPLEMENTACAO_DA_CLASSE = "@INICIO_DA_IMPLEMENTACAO_DA_CLASSE";
+	
+	public final static String MAPPING_PATH_CONTROLLER  = "@MAPPING_PATH_CONTROLLER";	
+	public final static String NOME_DO_METODO = "@NOME_DO_METODO";
+	public final static String NOME_DOS_PARAMETRO_DO_METODO = "@NOME_DOS_PARAMETRO_DO_METODO";
+	public final static String NOME_DOS_PARAMETRO_MAIS_GET = "@NOME_DOS_PARAMETRO_MAIS_GET";
+
+}
